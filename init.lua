@@ -231,7 +231,7 @@ require("lazy").setup({
 },
 })
 -- color
-vim.cmd[[colorscheme rose-pine]]
+vim.cmd[[colorscheme tokyonight-night]]
 
 require('nvim-tree').setup({
   sort_by = "case_sensitive",
