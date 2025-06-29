@@ -20,6 +20,11 @@ require("lazy").setup({
     ---@type ibl.config
     opts = {},
   },
+  
+  {
+  "github/copilot.vim",
+--  event = "InsertEnter", -- lazy-load on insert
+},
 
   {
     'nvim-tree/nvim-tree.lua',
