@@ -13,5 +13,5 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 vim.opt.swapfile = false
 vim.opt.cursorline = true
+vim.opt.scrolloff = 8
 -- vim.opt.guicursor = ""
-

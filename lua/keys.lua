@@ -7,6 +7,9 @@ vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- random binds
-vim.keymap.set('n', '<C-s>', ':w', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>tt', ':Term', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', ':Term<CR>', { noremap = true, silent = true })
+
+-- undotree keybinds
+vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true })
