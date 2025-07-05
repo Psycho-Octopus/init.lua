@@ -375,7 +375,7 @@ end
   },
 { 
     "nvim-lualine/lualine.nvim",
-    enabled = false,
+    enabled = true,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("lualine").setup({
@@ -398,7 +398,7 @@ end
 },
 })
 -- color
-vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd[[colorscheme rose-pine]]
 
 require('nvim-tree').setup({
   sort_by = "case_sensitive",
