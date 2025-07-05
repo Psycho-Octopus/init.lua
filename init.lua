@@ -1,7 +1,7 @@
 require("set")
 require("keys")
-require("cursor")
-
+-- require("cursor")
+-- require("lua.ctaylor.hardmode")
 -- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -20,15 +20,33 @@ require("lazy").setup({
     ---@type ibl.config
     opts = {},
   },
-  
   { "CRAG666/code_runner.nvim", config = true },
 
   {
   "github/copilot.vim",
 --  event = "InsertEnter", -- lazy-load on insert
+  enabled = false,
+  config = function()
+    vim.g.copilot_no_tab_map = true
+    vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+  end,
 },
+    {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local harpoon = require("harpoon"):setup({
+        -- optional settings
+        settings = { save_on_toggle = true },
+      })
+
+      vim.keymap.set("n", "<C-a>", function() harpoon: list():add() end)
+      vim.keymap.set("n", "<C-m>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "<C-l>", function() harpoon:list():remove(selected_entry) end)
+    end,
+  },
   { "ya2s/nvim-cursorline" },
-  
   {
   "theHamsta/nvim-dap-virtual-text",
   dependencies = {"mfussenegger/nvim-dap"},
@@ -38,14 +56,13 @@ require("lazy").setup({
     }
   end
 },
-  -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
+-- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
 {
     'numToStr/Comment.nvim',
     opts = {
         -- add any options here
     }
 },
-  
   {
   'stevearc/conform.nvim',
   opts = {},
@@ -245,13 +262,6 @@ require("lazy").setup({
     -- refer to the configuration section below
   }
 },
-{
-  "goolord/alpha-nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    require("ctaylor.alpha")
-  end,
-},
 
 
   -- LSP config
@@ -333,9 +343,9 @@ end
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<Tab>"] = cmp.mapping.select_next_item(),
-          ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete(),
         }),
         sources = cmp.config.sources({
@@ -363,8 +373,9 @@ end
       })
     end,
   },
-{
-  "nvim-lualine/lualine.nvim",
+{ 
+    "nvim-lualine/lualine.nvim",
+    enabled = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("lualine").setup({
@@ -387,7 +398,7 @@ end
 },
 })
 -- color
-vim.cmd[[colorscheme rose-pine]]
+vim.cmd[[colorscheme tokyonight-night]]
 
 require('nvim-tree').setup({
   sort_by = "case_sensitive",
@@ -437,7 +448,7 @@ require("ibl").setup({
 vim.diagnostic.config({
   virtual_text = {
     spacing = 4,
-    prefix = "●",  -- could be "●", "■", "◆", "▶", etc
+    prefix = "◆",  -- could be "●", "■", "◆", "▶", etc
   },
   signs = true,
   underline = true,
