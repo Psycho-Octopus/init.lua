@@ -16,6 +16,10 @@ vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>wq', ':wq<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>ce', ':CopilotChatExplain<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>st', ':InspectTree<CR>', { noremap = true, silent = true })
 -- undotree keybinds
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true })
+
+
