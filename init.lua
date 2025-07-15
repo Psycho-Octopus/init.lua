@@ -77,19 +77,7 @@ require("lazy").setup({
   'stevearc/conform.nvim',
   opts = {},
 },
- {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = true,
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-    },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
+
   { "m4xshen/autoclose.nvim" },
 
   { "tpope/vim-fugitive" },
@@ -127,12 +115,6 @@ require("lazy").setup({
     end
   },
   ]]--
-{
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-},
   -- theme
   {
     "rose-pine/neovim",
@@ -140,16 +122,6 @@ require("lazy").setup({
     config = function()
     end,
   },
-  {
-  "utilyre/barbecue.nvim",
-  name = "barbecue",
-  version = "*",
-  dependencies = {
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons", -- optional dependency
-  },
-  opts = {},
-},
 
   {
     "nvim-telescope/telescope.nvim",
